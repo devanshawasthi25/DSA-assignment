@@ -1,0 +1,158 @@
+/*  1.A Java program to implement a Stack data structure using the Linked list data structure.
+The required program needs to fulfill the following requirements
+Create a Node (Student) class to save the information (name and marks) of a student
+Create one or multiple stacks to save students data into the stack(s)
+Use a linked list data structure for the implementation of a stack.
+Take the choice of operation from the user and perform the following operations which depend
+on the choice
+1. To add a student to Stack
+2. To remove a Student from the Stack.
+3. Display all students of Stack.
+4. Display the top 3 positions of students. (The student with the highest marks is in first place positions  
+      are according to the same highest marks criteria)
+
+5. Press 5 or any other key to close the program */
+
+import java.util.*;
+
+class Student {
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+class Stack {
+    LinkedList<Student> students = new LinkedList<>();
+
+    void push(Student student) {
+        students.addFirst(student);
+    }
+
+    Student pop() {
+        return students.removeFirst();
+    }
+
+    void display() {
+        for (Student student : students) {
+            System.out.println("Name: " + student.name + ", Marks: " + student.marks);
+        }
+    }
+
+    void displayTop3() {
+        students.sort((s1, s2) -> s2.marks - s1.marks);
+        for (int i = 0; i < 3 && i < students.size(); i++) {
+            System.out.println((i + 1) + ". " + students.get(i).name + ", Marks: " + students.get(i).marks);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Stack stack = new Stack();
+
+        while (true) {
+            System.out.println("1. Add a student\n2. Remove a student\n3. Display all students\n4. Display top 3 students\n5. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter name and marks:");
+                    String name = scanner.nextLine();
+                    int marks = scanner.nextInt();
+                    scanner.nextLine();
+                    stack.push(new Student(name, marks));
+                    break;
+                case 2:
+                    Student removedStudent = stack.pop();
+                    System.out.println("Removed student: " + removedStudent.name);
+                    break;
+                case 3:
+                    stack.display();
+                    break;
+                case 4:
+                    stack.displayTop3();
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
+}
+
+import java.util.*;
+
+class Student {
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+class Stack {
+    LinkedList<Student> students = new LinkedList<>();
+
+    void push(Student student) {
+        students.addFirst(student);
+    }
+
+    Student pop() {
+        return students.removeFirst();
+    }
+
+    void display() {
+        for (Student student : students) {
+            System.out.println("Name: " + student.name + ", Marks: " + student.marks);
+        }
+    }
+
+    void displayTop3() {
+        students.sort((s1, s2) -> s2.marks - s1.marks);
+        for (int i = 0; i < 3 && i < students.size(); i++) {
+            System.out.println((i + 1) + ". " + students.get(i).name + ", Marks: " + students.get(i).marks);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Stack stack = new Stack();
+
+        while (true) {
+            System.out.println("1. Add a student\n2. Remove a student\n3. Display all students\n4. Display top 3 students\n5. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter name and marks:");
+                    String name = scanner.nextLine();
+                    int marks = scanner.nextInt();
+                    scanner.nextLine();
+                    stack.push(new Student(name, marks));
+                    break;
+                case 2:
+                    Student removedStudent = stack.pop();
+                    System.out.println("Removed student: " + removedStudent.name);
+                    break;
+                case 3:
+                    stack.display();
+                    break;
+                case 4:
+                    stack.displayTop3();
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
+}
